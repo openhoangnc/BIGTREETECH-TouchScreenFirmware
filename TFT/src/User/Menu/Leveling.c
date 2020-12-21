@@ -15,6 +15,8 @@ const MENUITEMS manualLevelingItems = {
    {ICON_BACK,                    LABEL_BACK},}
 };
 
+static bool movedToLevelingPoint = false;
+
 void moveToLevelingPoint(u8 point)
 {
   s16 pointPosition[5][2] = {
@@ -33,6 +35,7 @@ void moveToLevelingPoint(u8 point)
   storeCmd("G0 Z%.3f F%d\n", infoSettings.level_z_raise, infoSettings.level_feedrate[Z_AXIS]);
   storeCmd("G0 X%d Y%d F%d\n", pointPosition[point][0], pointPosition[point][1], infoSettings.level_feedrate[X_AXIS]);
   storeCmd("G0 Z%.3f F%d\n", infoSettings.level_z_pos, infoSettings.level_feedrate[Z_AXIS]);
+  movedToLevelingPoint = true;
 }
 
 void menuManualLeveling(void)
@@ -40,6 +43,7 @@ void menuManualLeveling(void)
   KEY_VALUES key_num = KEY_IDLE;
 
   menuDrawPage(&manualLevelingItems);
+  movedToLevelingPoint = false;
 
   while (infoMenu.menu[infoMenu.cur] == menuManualLeveling)
   {
@@ -81,6 +85,11 @@ void menuManualLeveling(void)
         break;
 
       case KEY_ICON_7:
+        // go home XY
+        if (coordinateIsKnown() && movedToLevelingPoint) {
+          storeCmd("G0 Z%.3f F%d\n", infoSettings.level_z_raise, infoSettings.level_feedrate[Z_AXIS]);
+          storeCmd("G0 X%d Y%d F%d\n", 0, 0, infoSettings.level_feedrate[X_AXIS]);
+        }
         infoMenu.cur--;
         break;
 

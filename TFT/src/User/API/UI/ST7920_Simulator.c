@@ -1,9 +1,11 @@
+#ifdef MARLIN_MODE_SUPPORT
+
 #include "ST7920_Simulator.h"
 #include "includes.h"
 #include "GUI.h"
 #include "../../Configuration.h"
 
-#ifdef ST7920_SPI
+#if defined(MARLIN_MODE_SUPPORT) && ST7920_SPI
 // CGRAM buffer
 uint8_t ST7920_CGRAM[64][2]; // [64*2] = [4 * 16*2*8], means 4 * [16*16] bitmap font,
 
@@ -377,3 +379,5 @@ void ST7920_ParseRecv(uint8_t val)
 }
 
 #endif
+
+#endif // MARLIN_MODE_SUPPORT

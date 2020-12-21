@@ -1,3 +1,5 @@
+#ifdef MARLIN_MODE_SUPPORT
+
 #include "HD44780_Simulator.h"
 #include "includes.h"
 #include "GUI.h"
@@ -244,3 +246,5 @@ void HD44780_ParseRecv(uint8_t val)
 }
 
 #endif
+
+#endif // MARLIN_MODE_SUPPORT

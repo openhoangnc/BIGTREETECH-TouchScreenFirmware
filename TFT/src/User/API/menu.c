@@ -753,8 +753,10 @@ void loopBackEnd(void)
       }
   #endif
 
+  #ifdef MARLIN_MODE_SUPPORT
   #if defined(ST7920_SPI) || defined(LCD2004_simulator)
     loopCheckMode();
+  #endif
   #endif
 
   #ifdef FIL_RUNOUT_PIN

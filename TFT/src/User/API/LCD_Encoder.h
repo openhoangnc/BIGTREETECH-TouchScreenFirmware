@@ -1,3 +1,5 @@
+#ifdef MARLIN_MODE_SUPPORT
+
 #ifndef _LCD_ENCODER_H_
 #define _LCD_ENCODER_H_
 
@@ -44,3 +46,5 @@ void sendEncoder(uint8_t num);
 #endif
 
 #endif
+
+#endif // MARLIN_MODE_SUPPORT

@@ -1,3 +1,5 @@
+#ifdef MARLIN_MODE_SUPPORT
+
 #include "spi_slave.h"
 #include "spi.h"
 #include "GPIO_Init.h"
@@ -146,7 +148,7 @@ void EXTI15_10_IRQHandler(void)
       break;
     #endif
 
-    #ifdef ST7920_SPI
+    #if defined(MARLIN_MODE_SUPPORT) && ST7920_SPI
     case LCD12864:
       if((GPIOB->IDR & (1<<12)) != 0)
       {
@@ -165,3 +167,5 @@ void EXTI15_10_IRQHandler(void)
   }
 }
 #endif
+
+#endif // MARLIN_MODE_SUPPORT

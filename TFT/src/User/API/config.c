@@ -601,6 +601,7 @@ void parseConfigKey(u16 index)
 
   //---------------------------------------------------------Marlin Mode Settings (Only for TFT35_V3.0/TFT24_V1.1/TFT28V3.0)
 
+#ifdef MARLIN_MODE_SUPPORT
 #if defined(ST7920_SPI) || defined(LCD2004_simulator)
 
   case C_INDEX_MODE:
@@ -645,7 +646,7 @@ void parseConfigKey(u16 index)
     break;
 
 #endif // ST7920_SPI || LCD2004_simulator
-
+#endif // MARLIN_MODE_SUPPORT
   //---------------------------------------------------------Printer / Machine Settings
 
   case C_INDEX_HOTEND_COUNT:

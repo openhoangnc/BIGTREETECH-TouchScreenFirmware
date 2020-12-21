@@ -1,3 +1,5 @@
+#ifdef MARLIN_MODE_SUPPORT
+
 #include "MarlinMode.h"
 #include "spi_slave.h"
 #include "HD44780.h"
@@ -76,3 +78,5 @@ void menuMarlinMode(void)
 }
 
 #endif
+
+#endif // MARLIN_MODE_SUPPORT

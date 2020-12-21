@@ -14,7 +14,7 @@
     #error "the Configuration.h is old. please use the latest Configuration.h file"
 #endif
 
-#ifdef ST7920_SPI
+#if defined(MARLIN_MODE_SUPPORT) && ST7920_SPI
     #ifdef CLEAN_MODE_SWITCHING_SUPPORT
     #error "CLEAN_MODE_SWITCHING_SUPPORT is now SERIAL_ALWAYS_ON. Please update your configuration."
     #endif

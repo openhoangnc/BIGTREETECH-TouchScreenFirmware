@@ -6,7 +6,7 @@
 
 #if defined(MKS_32_V1_4) || defined (MKS_28_V1_0)
 
-#if defined(ST7920_SPI)
+#if defined(MARLIN_MODE_SUPPORT) && defined(ST7920_SPI)
 //TODO:
 //now support SPI3 and PB1 CS only
 //more compatibility changes are needed

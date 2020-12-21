@@ -1,3 +1,5 @@
+#ifdef MARLIN_MODE_SUPPORT
+
 #include "GPIO_Init.h"
 #include "includes.h"
 #include "LCD_Encoder.h"
@@ -247,3 +249,5 @@ void sendEncoder(uint8_t num)
 }
 
 #endif
+
+#endif // MARLIN_MODE_SUPPORT

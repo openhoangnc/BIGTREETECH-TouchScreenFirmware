@@ -7,7 +7,7 @@
 #endif
 
 
-#ifdef ST7920_SPI // LCD12864 color settings
+#if defined(MARLIN_MODE_SUPPORT) && ST7920_SPI // LCD12864 color settings
   #ifdef BUZZER_PIN
     #define LCD12864_BG_INDEX KEY_ICON_4
   #else
@@ -86,7 +86,7 @@ void menuLanguage(void)
   }
 }
 
-#ifdef ST7920_SPI
+#if defined(MARLIN_MODE_SUPPORT) && ST7920_SPI
 
 void menuSimulatorBackGroundColor(void)
 {
@@ -308,7 +308,7 @@ void menuScreenSettings(void)
     screenSettingsItems.items[BUZZER_KEY_INDEX].label.index = LABEL_SOUND;
   #endif
 
-  #ifdef ST7920_SPI
+  #if defined(MARLIN_MODE_SUPPORT) && ST7920_SPI
     // LCD12864 background color
     screenSettingsItems.items[LCD12864_BG_INDEX].icon = ICON_BKCOLOR;
     screenSettingsItems.items[LCD12864_BG_INDEX].label.index = LABEL_CUSTOM;
@@ -370,7 +370,7 @@ void menuScreenSettings(void)
         break;
       #endif
 
-      #ifdef ST7920_SPI
+      #if defined(MARLIN_MODE_SUPPORT) && ST7920_SPI
       case LCD12864_BG_INDEX:
         infoMenu.menu[++infoMenu.cur] = menuSimulatorBackGroundColor;
         break;

@@ -8,7 +8,7 @@
 
 #if !defined(MKS_32_V1_4) && !defined (MKS_28_V1_0)
 
-#if defined(ST7920_SPI)
+#if defined(MARLIN_MODE_SUPPORT) && defined(ST7920_SPI)
 //TODO:
 //now support SPI2 and PB12 CS only
 //more compatibility changes are needed
@@ -149,7 +149,7 @@ void EXTI15_10_IRQHandler(void)
       break;
     #endif
 
-    #ifdef ST7920_SPI
+    #if defined(MARLIN_MODE_SUPPORT) && ST7920_SPI
     case LCD12864:
       if((GPIOB->IDR & (1<<12)) != 0)
       {

@@ -179,7 +179,7 @@
 #define BUZZER_PIN    PA2
 
 // Marlin mode + LCD Encoder support
-#ifdef ST7920_SPI
+#if defined(MARLIN_MODE_SUPPORT) && ST7920_SPI
   #define SPI3_PIN_SMART_USAGE         // if enabled, it avoids any SPI3 CS pin usage and free the MISO (PB4 pin) for encoder pins
 
   #define LCD_ENCA_PIN  PA13           // map ENCA pin to JTAG DIO pin
