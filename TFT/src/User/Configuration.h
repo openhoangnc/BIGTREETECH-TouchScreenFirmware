@@ -8,7 +8,7 @@
 /**
  * To work with RepRapFirmware, Add M575 P1 S2 B115200 to the end of config.g file in sd card
 */
-#define RepRapFirmware
+//#define RepRapFirmware
 
 /**
  * Default Mode
@@ -49,15 +49,17 @@
  *              6: LCD_DIM_300_SECONDS,  7: LCD_DIM_CUSTOM_SECONDS
  *
  */
-#define DEFAULT_LCD_BRIGHTNESS      11  // 11: LCD_100_PERCENT - Brightness value from list
-#define DEFAULT_LCD_IDLE_BRIGHTNESS 3   // 3: LCD_10_PERCENT - Brightness value from list
-#define DEFAULT_LCD_IDLE_TIMER      0   // 0: LCD_DIM_OFF
-#define LCD_DIM_CUSTOM_SECONDS      600 // Custom value in seconds. Will be used if LCD_DIM_CUSTOM_SECONDS is set as idle timer.
+#define DEFAULT_LCD_BRIGHTNESS      6   // 11: LCD_100_PERCENT - Brightness value from list
+#define DEFAULT_LCD_IDLE_BRIGHTNESS 0   // 3: LCD_10_PERCENT - Brightness value from list
+#define DEFAULT_LCD_IDLE_TIMER      1   // 0: LCD_DIM_OFF
+#define LCD_DIM_CUSTOM_SECONDS      120 // Custom value in seconds. Will be used if LCD_DIM_CUSTOM_SECONDS is set as idle timer.
 
 //===========================================================================
 //=========================== Marlin Mode Settings ==========================
 //===========================================================================
 
+//#define MARLIN_MODE_SUPPORT
+#ifdef MARLIN_MODE_SUPPORT
 /**
  * Default Marlin Mode Background & Font Color Options
  *
@@ -98,6 +100,8 @@
  */
 #define SERIAL_ALWAYS_ON 0  // Default: 0 (Disabled)
 
+#endif //MARLIN_MODE_SUPPORT
+
 //===========================================================================
 //========================== Touch Mode Settings ============================
 //===========================================================================
@@ -110,7 +114,7 @@
  *
  * :[2400, 9600, 19200, 38400, 57600, 115200, 250000, 500000, 1000000]
  */
-#define BAUDRATE 115200
+#define BAUDRATE 250000
 
 /**
  * Default Primary Language (for Touch-Mode only)
@@ -314,9 +318,9 @@
  * Manual Leveling
  * Move to four corner points to Leveling manually (Point 1, Point 2, Point 3, Point 4)
  */
-#define LEVELING_EDGE_DISTANCE        20  // Inset distance from bed's edge for calculating leveling point location.
-#define LEVELING_POINT_Z            0.2f  // Z-axis position when nozzle stays for leveling
-#define LEVELING_POINT_MOVE_Z      10.0f  // Z-axis position when nozzle move to next point
+#define LEVELING_EDGE_DISTANCE        30  // Inset distance from bed's edge for calculating leveling point location.
+#define LEVELING_POINT_Z            0.0f  // Z-axis position when nozzle stays for leveling
+#define LEVELING_POINT_MOVE_Z       4.0f  // Z-axis position when nozzle move to next point
 #define LEVELING_POINT_XY_FEEDRATE  6000  // (mm/min) X and Y axes move feedrate
 #define LEVELING_POINT_Z_FEEDRATE    600  // (mm/min) Z axis move feedrate
 
