@@ -1,3 +1,4 @@
+#ifdef MARLIN_MODE_SUPPORT
 #ifndef _SELECTMODE_H_
 #define _SELECTMODE_H_
 
@@ -26,3 +27,4 @@ void loopCheckMode(void);
 #endif
 
 #endif
+#endif // MARLIN_MODE_SUPPORT

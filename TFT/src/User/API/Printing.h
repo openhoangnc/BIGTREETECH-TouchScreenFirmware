@@ -19,11 +19,15 @@ extern "C" {
 #endif
 
 #ifdef RAPID_SERIAL_COMM
-#define rapid_serial_loop()  loopBackEnd()
-#define rapid_serial_comm()  if(isPrinting() == true && infoSettings.serial_alwaysOn != 1){loopBackEnd();}
+  #define rapid_serial_loop()  loopBackEnd()
+  #ifdef MARLIN_MODE_SUPPORT
+    #define rapid_serial_comm()  if(isPrinting() == true && infoSettings.serial_alwaysOn != 1){loopBackEnd();}
+  #else
+    #define rapid_serial_comm()  if(isPrinting() == true){loopBackEnd();}
+  #endif
 #else
-#define rapid_serial_loop()
-#define rapid_serial_comm()
+  #define rapid_serial_loop()
+  #define rapid_serial_comm()
 #endif
 
 

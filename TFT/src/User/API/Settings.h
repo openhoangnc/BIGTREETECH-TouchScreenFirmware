@@ -97,6 +97,7 @@ typedef struct
   uint8_t  ack_notification;
 
 // Marlin Mode Settings
+  #ifdef MARLIN_MODE_SUPPORT
   uint8_t  mode;
   uint8_t  serial_alwaysOn;
   uint16_t marlin_mode_bg_color;
@@ -104,6 +105,7 @@ typedef struct
   uint8_t  marlin_mode_showtitle;
   uint8_t  marlin_mode_fullscreen;
   uint8_t  marlin_type;
+  #endif
 
 // Printer / Machine Settings
   uint8_t  hotend_count;
@@ -176,7 +178,9 @@ typedef struct
 
 typedef struct
 {
+  #ifdef MARLIN_MODE_SUPPORT
   char marlin_title[MAX_GCODE_LENGTH + 1];
+  #endif
   char preheat_name[PREHEAT_COUNT][MAX_GCODE_LENGTH + 1];
 } STRINGS_STORE;
 

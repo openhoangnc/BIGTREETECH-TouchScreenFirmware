@@ -73,7 +73,9 @@ void readStoredPara(void)
   {
   infoSettings.baudrate             = byteToWord(data + (index += 4), 4);
   infoSettings.language             = byteToWord(data + (index += 4), 4);
+  #ifdef MARLIN_MODE_SUPPORT
   infoSettings.mode                 = byteToWord(data + (index += 4), 4);
+  #endif
   infoSettings.status_screen        = byteToWord(data + (index += 4), 4);
 
   infoSettings.bg_color             = byteToWord(data + (index += 4), 4);
@@ -105,12 +107,14 @@ void readStoredPara(void)
 
   infoSettings.print_summary        = byteToWord(data + (index += 4), 4);
 
+  #ifdef MARLIN_MODE_SUPPORT
   infoSettings.serial_alwaysOn            = byteToWord(data + (index += 4), 4);
   infoSettings.marlin_mode_bg_color       = byteToWord(data + (index += 4), 4);
   infoSettings.marlin_mode_font_color     = byteToWord(data + (index += 4), 4);
   infoSettings.marlin_mode_showtitle      = byteToWord(data + (index += 4), 4);
   infoSettings.marlin_mode_fullscreen     = byteToWord(data + (index += 4), 4);
   infoSettings.marlin_type                = byteToWord(data + (index += 4), 4);
+  #endif
 
   infoSettings.send_start_gcode     = byteToWord(data + (index += 4), 4);
   infoSettings.send_end_gcode       = byteToWord(data + (index += 4), 4);
@@ -213,7 +217,9 @@ void storePara(void)
   wordToByte(PARA_SIGN,                               data + (index += 4));
   wordToByte(infoSettings.baudrate,                   data + (index += 4));
   wordToByte(infoSettings.language,                   data + (index += 4));
+  #ifdef MARLIN_MODE_SUPPORT
   wordToByte(infoSettings.mode,                       data + (index += 4));
+  #endif
   wordToByte(infoSettings.status_screen,              data + (index += 4));
 
   wordToByte(infoSettings.bg_color,                   data + (index += 4));
@@ -245,12 +251,14 @@ void storePara(void)
 
   wordToByte(infoSettings.print_summary,              data + (index += 4));
 
+  #ifdef MARLIN_MODE_SUPPORT
   wordToByte(infoSettings.serial_alwaysOn,            data + (index += 4));
   wordToByte(infoSettings.marlin_mode_bg_color,       data + (index += 4));
   wordToByte(infoSettings.marlin_mode_font_color,     data + (index += 4));
   wordToByte(infoSettings.marlin_mode_showtitle,      data + (index += 4));
   wordToByte(infoSettings.marlin_mode_fullscreen,     data + (index += 4));
   wordToByte(infoSettings.marlin_type,                data + (index += 4));
+  #endif
 
   wordToByte(infoSettings.send_start_gcode,           data + (index += 4));
   wordToByte(infoSettings.send_end_gcode,             data + (index += 4));

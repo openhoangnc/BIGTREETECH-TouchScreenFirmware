@@ -40,8 +40,13 @@ typedef struct
 #define BAR_VALUE_FONT_COLOR BLACK
 #define BAR_VALUE_BG_COLOR   0xFFF2
 
-#define TERM_FONT_COLOR infoSettings.marlin_mode_font_color
-#define TERM_BG_COLOR   infoSettings.marlin_mode_bg_color
+#ifdef MARLIN_MODE_SUPPORT
+  #define TERM_FONT_COLOR infoSettings.marlin_mode_font_color
+  #define TERM_BG_COLOR   infoSettings.marlin_mode_bg_color
+#else
+  #define TERM_FONT_COLOR WHITE
+  #define TERM_BG_COLOR   BLACK
+#endif
 
 // keyboard layouts
 #define LAYOUT_1_COL_NUM 6

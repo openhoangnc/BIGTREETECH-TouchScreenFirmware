@@ -416,7 +416,9 @@ void resetConfig(void)
   tempCG.count = n;
 
   //restore strings store
+  #ifdef MARLIN_MODE_SUPPORT
   strcpy(tempST.marlin_title, MARLIN_BANNER_TEXT);
+  #endif
 
   for (int i = 0; i < PREHEAT_COUNT;i++)
   {

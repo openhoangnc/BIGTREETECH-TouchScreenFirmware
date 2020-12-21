@@ -1,3 +1,5 @@
+#ifdef MARLIN_MODE_SUPPORT
+
 #include "includes.h"
 #include "xpt2046.h"
 #include "GPIO_Init.h"
@@ -168,3 +170,5 @@ void menuMode(void)
 
   infoMenuSelect();
 }
+
+#endif // MARLIN_MODE_SUPPORT

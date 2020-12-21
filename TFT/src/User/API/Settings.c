@@ -41,6 +41,7 @@ void infoSettingsReset(void)
   infoSettings.ack_notification       = ACK_NOTIFICATION_STYLE;
 
 // Marlin Mode Settings
+  #ifdef MARLIN_MODE_SUPPORT
   infoSettings.mode                   = DEFAULT_LCD_MODE;
   infoSettings.serial_alwaysOn        = SERIAL_ALWAYS_ON;
   infoSettings.marlin_mode_bg_color   = lcd_colors[MARLIN_BKCOLOR];
@@ -48,6 +49,7 @@ void infoSettingsReset(void)
   infoSettings.marlin_mode_showtitle  = MARLIN_SHOW_BANNER;
   infoSettings.marlin_mode_fullscreen = DEFAULT_ST7920_FULLSCREEN_MODE;
   infoSettings.marlin_type            = LCD12864;
+  #endif
 
 // Printer / Machine Settings
   infoSettings.hotend_count           = HOTEND_NUM;

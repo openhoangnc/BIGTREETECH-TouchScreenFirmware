@@ -189,8 +189,10 @@ void _setDialogCancelTextLabel(int16_t index)
 */
 void showDialog(DIALOG_TYPE type, void (*ok_action)(), void (*cancel_action)(), void (*loop_action)())
 {
+  #ifdef MARLIN_MODE_SUPPORT
   if (infoSettings.mode == MARLIN)
     return;
+  #endif 
 
   popup_redraw = true;
   popup_type = type;

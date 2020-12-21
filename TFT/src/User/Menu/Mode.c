@@ -24,10 +24,12 @@ void Serial_ReSourceInit(void)
 void infoMenuSelect(void)
 {
   infoMenu.cur = 0;
+  #ifdef MARLIN_MODE_SUPPORT
   switch(infoSettings.mode)
   {
     case SERIAL_TSC:
     {
+  #endif //MARLIN_MODE_SUPPORT
       Serial_ReSourceInit();
       #ifdef BUZZER_PIN
         Buzzer_Config();
@@ -63,6 +65,7 @@ void infoMenuSelect(void)
           freshboot = false;
         }
       #endif
+  #ifdef MARLIN_MODE_SUPPORT
       break;
     }
 
@@ -89,4 +92,5 @@ void infoMenuSelect(void)
       #endif
       break;
   }
+  #endif //MARLIN_MODE_SUPPORT
 }
