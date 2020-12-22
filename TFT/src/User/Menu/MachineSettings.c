@@ -262,8 +262,18 @@ void menuMachineSettings(void)
     // icon                         label
     {{ICON_PARAMETER,               LABEL_PARAMETER_SETTING},
      {ICON_GCODE,                   LABEL_TERMINAL},
+  #if HAS_CUSTOM_MENU
      {ICON_CUSTOM,                  LABEL_CUSTOM},
+  #else
+     {ICON_BACKGROUND,              LABEL_BACKGROUND},
+  #endif
+     
+  #ifdef ENABLE_RGB_SETTINGS
      {ICON_RGB_SETTINGS,            LABEL_RGB_SETTINGS},
+  #else
+     {ICON_BACKGROUND,              LABEL_BACKGROUND},
+  #endif
+
      {ICON_TUNING,                  LABEL_TUNING},
   #if QUICK_EEPROM_BUTTON == 1
      {ICON_EEPROM_SAVE,             LABEL_EEPROM_SETTINGS},
@@ -293,14 +303,17 @@ void menuMachineSettings(void)
     case KEY_ICON_1:
       infoMenu.menu[++infoMenu.cur] = menuSendGcode;
       break;
-
+#if HAS_CUSTOM_MENU
     case KEY_ICON_2:
       infoMenu.menu[++infoMenu.cur] = menuCustom;
       break;
+#endif
 
+#ifdef ENABLE_RGB_SETTINGS
     case KEY_ICON_3:
       infoMenu.menu[++infoMenu.cur] = menuRGBSettings;
       break;
+#endif
 
     case KEY_ICON_4:
       infoMenu.menu[++infoMenu.cur] = menuTuning;

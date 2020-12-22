@@ -13,7 +13,11 @@ void menuMain(void)
      {ICON_EXTRUDE,                 LABEL_EXTRUDE},
      {ICON_STOP,                    LABEL_EMERGENCYSTOP},
      {ICON_GCODE,                   LABEL_TERMINAL},
+     #if HAS_CUSTOM_MENU
      {ICON_CUSTOM,                  LABEL_CUSTOM},
+       #else
+     {ICON_BACKGROUND,              LABEL_BACKGROUND},
+      #endif
      {ICON_SETTINGS,                LABEL_SETTINGS},
      {ICON_BACK,                    LABEL_BACK},}
   };
@@ -56,9 +60,11 @@ void menuMain(void)
         infoMenu.menu[++infoMenu.cur] = menuSendGcode;
         break;
 
+      #if HAS_CUSTOM_MENU
       case KEY_ICON_5:
-        infoMenu.menu[++infoMenu.cur] = menuCustom;
+          infoMenu.menu[++infoMenu.cur] = menuCustom;
         break;
+      #endif
 
       case KEY_ICON_6:
         infoMenu.menu[++infoMenu.cur] = menuSettings;

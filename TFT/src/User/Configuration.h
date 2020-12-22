@@ -526,6 +526,23 @@
 //#define CUSTOM_14_LABEL "Custom14"
 //#define CUSTOM_14_GCODE "M105\n"
 
+#define HAS_CUSTOM_MENU \
+    ENABLE_CUSTOM_0  || \
+    ENABLE_CUSTOM_1  || \
+    ENABLE_CUSTOM_2  || \
+    ENABLE_CUSTOM_3  || \
+    ENABLE_CUSTOM_4  || \
+    ENABLE_CUSTOM_5  || \
+    ENABLE_CUSTOM_6  || \
+    ENABLE_CUSTOM_7  || \
+    ENABLE_CUSTOM_8  || \
+    ENABLE_CUSTOM_9  || \
+    ENABLE_CUSTOM_10 || \
+    ENABLE_CUSTOM_11 || \
+    ENABLE_CUSTOM_12 || \
+    ENABLE_CUSTOM_13 || \
+    ENABLE_CUSTOM_14
+
 /**
  * Start/End/Cancel G-code
  *
