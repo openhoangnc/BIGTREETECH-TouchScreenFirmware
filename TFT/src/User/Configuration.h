@@ -8,7 +8,7 @@
 /**
  * To work with RepRapFirmware, Add M575 P1 S2 B115200 to the end of config.g file in sd card
 */
-//#define RepRapFirmware
+#define RepRapFirmware
 
 /**
  * Default Mode
@@ -50,8 +50,8 @@
  *
  */
 #define DEFAULT_LCD_BRIGHTNESS      6   // 11: LCD_100_PERCENT - Brightness value from list
-#define DEFAULT_LCD_IDLE_BRIGHTNESS 0   // 3: LCD_10_PERCENT - Brightness value from list
-#define DEFAULT_LCD_IDLE_TIMER      1   // 0: LCD_DIM_OFF
+#define DEFAULT_LCD_IDLE_BRIGHTNESS 1   // 3: LCD_10_PERCENT - Brightness value from list
+#define DEFAULT_LCD_IDLE_TIMER      4   // 0: LCD_DIM_OFF
 #define LCD_DIM_CUSTOM_SECONDS      120 // Custom value in seconds. Will be used if LCD_DIM_CUSTOM_SECONDS is set as idle timer.
 
 //===========================================================================
@@ -495,20 +495,20 @@
  *
  * CUSTOM_X_LABEL is the name of the custom button, CUSTOM_X_GCODE is the G-code to be sent by the custom button, this should always end with a New-Line character '\n'
  */
-#define CUSTOM_0_LABEL "Disable Steppers"
-#define CUSTOM_0_GCODE "M84\n"
-#define CUSTOM_1_LABEL "Init SD Card"
-#define CUSTOM_1_GCODE "M21\n"
-#define CUSTOM_2_LABEL "Release SD Card"
-#define CUSTOM_2_GCODE "M22\n"
-#define CUSTOM_3_LABEL "Enable Leveling State"
-#define CUSTOM_3_GCODE "M420 S1\n"
-#define CUSTOM_4_LABEL "Save to EEPROM"
-#define CUSTOM_4_GCODE "M500\n"
-#define CUSTOM_5_LABEL "Restore from EEPROM"
-#define CUSTOM_5_GCODE "M501\n"
-#define CUSTOM_6_LABEL "EEPROM Defaults"
-#define CUSTOM_6_GCODE "M502\n"
+//#define CUSTOM_0_LABEL "Disable Steppers"
+//#define CUSTOM_0_GCODE "M84\n"
+//#define CUSTOM_1_LABEL "Init SD Card"
+//#define CUSTOM_1_GCODE "M21\n"
+//#define CUSTOM_2_LABEL "Release SD Card"
+//#define CUSTOM_2_GCODE "M22\n"
+//#define CUSTOM_3_LABEL "Enable Leveling State"
+//#define CUSTOM_3_GCODE "M420 S1\n"
+//#define CUSTOM_4_LABEL "Save to EEPROM"
+//#define CUSTOM_4_GCODE "M500\n"
+//#define CUSTOM_5_LABEL "Restore from EEPROM"
+//#define CUSTOM_5_GCODE "M501\n"
+//#define CUSTOM_6_LABEL "EEPROM Defaults"
+//#define CUSTOM_6_GCODE "M502\n"
 //#define CUSTOM_7_LABEL "Custom7"
 //#define CUSTOM_7_GCODE "M105\n"
 //#define CUSTOM_8_LABEL "Custom8"
