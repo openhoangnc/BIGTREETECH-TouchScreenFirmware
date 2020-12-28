@@ -57,7 +57,7 @@ void infoMenuSelect(void)
           heatSetUpdateSeconds(TEMPERATURE_QUERY_FAST_SECONDS);
           LOGO_ReadDisplay();
           updateNextHeatCheckTime(); // send "M105" 1s later not now, because of mega2560 will be hanged when received data at startup
-          while (OS_GetTimeMs() - startUpTime < 3000) //Display 3s logo
+          while (OS_GetTimeMs() - startUpTime < 500) //Display 3s logo
           {
             loopProcess();
           }
