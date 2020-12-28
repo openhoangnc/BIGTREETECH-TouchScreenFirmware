@@ -61,6 +61,23 @@ static char ack_seen(const char *str)
   return false;
 }
 
+
+static char ack_next(const char *str)
+{
+  u16 i;
+  for(; ack_index<ACK_MAX_SIZE && dmaL2Cache[ack_index]!=0; ack_index++)
+  {
+    for(i=0; str[i]!=0 && dmaL2Cache[ack_index+i]!=0 && dmaL2Cache[ack_index+i]==str[i]; i++)
+    {}
+    if(str[i]==0)
+    {
+      ack_index += i;
+      return true;
+    }
+  }
+  return false;
+}
+
 static char ack_cmp(const char *str)
 {
   u16 i;
@@ -439,6 +456,30 @@ void parseACK(void)
           request_M27(infoSettings.m27_refresh_time);                //Check if there is a SD or USB print running.
         }
       }
+      else if(ack_seen("Current file: "))
+      {
+        // Current file: CE3PRO~3.GCO CE3PRO_TFT24 Ender 3.gcode
+        if (!infoHost.printing) {
+          infoMachineSettings.onboard_sd_support = ENABLE;
+          uint16_t start_index = ack_index;
+          uint16_t end_index = ack_next(" ") ? (ack_index - 1) : start_index;
+          infoFile.source = BOARD_SD;
+          strcpy(infoFile.title, getCurFileSource());
+          strcat(infoFile.title,"/");
+          uint16_t path_len = MIN(end_index - start_index, MAX_PATH_LEN - strlen(getCurFileSource()) - 1);
+          strncat(infoFile.title, dmaL2Cache + start_index, path_len);
+          infoFile.title[path_len + strlen(getCurFileSource()) + 1] = 0;
+
+          infoHost.printing = true;
+          if (infoSettings.print_summary)
+          {
+            resetFilamentUsed();
+          }
+          infoPrinting.time = 0;
+          infoPrinting.cur = 0;
+          infoPrinting.size = 0;
+        }
+      }
       else if(infoMachineSettings.onboard_sd_support == ENABLED && infoFile.source == BOARD_SD && ack_seen("Not SD printing"))
       {
         infoHost.printing = false;
@@ -451,6 +492,9 @@ void parseACK(void)
         // Parsing printing data
         // Example: SD printing byte 123/12345
         infoPrinting.cur = ack_value();
+        if (infoPrinting.size == 0 && ack_next("/")) {
+          infoPrinting.size = ack_value();
+        }
   //      powerFailedCache(position);
       }
       else if(infoMachineSettings.onboard_sd_support == ENABLED && infoFile.source == BOARD_SD && ack_seen("Done printing file"))
